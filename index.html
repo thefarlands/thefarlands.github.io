@@ -1,117 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Farlands</title>
+    <title>Simple Login Form Template | Tutorial Jinni</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <h1> test </h1>
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-
-    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-
-    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-
-    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-
-    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-
-    <meta name="robots" content="noindex, follow">
-    <script>
-    (function(w, d) {
-        !function(e, t, r, a, s) {
-            e[r] = e[r] || {}, e[r].executed = [], e.zaraz = {
-                deferred: []
-            };
-            var n = t.getElementsByTagName("title")[0];
-            e[r].c = t.cookie, n && (e[r].t = t.getElementsByTagName("title")[0].text), e[r].w = e.screen.width, e[r].h = e.screen.height, e[r].j = e.innerHeight, e[r].e = e.innerWidth, e[r].l = e.location.href, e[r].r = t.referrer, e[r].k = e.screen.colorDepth, e[r].n = t.characterSet, e[r].o = (new Date).getTimezoneOffset(), //
-            e[s] = e[s] || [], e.zaraz._preTrack = [], e.zaraz.track = (t, r) => e.zaraz._preTrack.push([t, r]), e[s].push({
-                "zaraz.start": (new Date).getTime()
-            });
-            var i = t.getElementsByTagName(a)[0],
-                o = t.createElement(a);
-            o.defer = !0, o.src = "/cdn-cgi/zaraz/s.js?" + new URLSearchParams(e[r]).toString(), i.parentNode.insertBefore(o, i)
-        }(w, d, "zarazData", "script", "dataLayer");
-    })(window, document);
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'>
+    <style>
+        body{
+          font-family: 'Open Sans', sans-serif;
+          background:#3498db;
+          margin: 0 auto 0 auto;
+          width:100%;
+          text-align:center;
+          margin: 20px 0px 20px 0px;
+        }
+        p{
+          font-size:12px;
+          text-decoration: none;
+          color:#ffffff;
+        }
+        h1{
+          font-size:1.5em;
+          color:#525252;
+        }
+        .box{
+          background:white;
+          width:300px;
+          border-radius:6px;
+          margin: 0 auto 0 auto;
+          padding:0px 0px 70px 0px;
+          border: #2980b9 4px solid;
+        }
+        .username{
+          background:#ecf0f1;
+          border: #ccc 1px solid;
+          border-bottom: #ccc 2px solid;
+          padding: 8px;
+          width:250px;
+          color:#AAAAAA;
+          margin-top:10px;
+          font-size:1em;
+          border-radius:4px;
+        }
+        .button{
+          background:#2ecc71;
+          width:125px;
+          padding-top:5px;
+          padding-bottom:5px;
+          color:white;
+          border-radius:4px;
+          border: #27ae60 1px solid;
+          margin-top:20px;
+          margin-bottom:20px;
+          float:left;
+          margin-left:88px;
+          font-weight:800;
+          font-size:0.8em;
+        }
+        .button:hover{
+          background:#2CC06B;
+        }
+        .fpwd{
+            color:#f1c40f;
+            text-decoration: underline;
+        }
+       #absoluteCenteredDiv{
+            position: absolute;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width:400px;
+            height: 300px;
+            text-align: center;
+       }
+    </style>
 </head>
 <body>
-    <div class="limiter">
-        <div class="container-login100">
-            <div class="wrap-login100 p-t-50 p-b-90">
-                <form class="login100-form validate-form flex-sb flex-w">
-                    <span class="login100-form-title p-b-51">
-                    Login
-                    </span>
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
-                        <input class="input100" type="text" name="username" placeholder="Username">
-                        <span class="focus-input100"></span>
-                    </div>
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-                        <input class="input100" type="password" name="pass" placeholder="Password">
-                        <span class="focus-input100"></span>
-                    </div>
-                    <div class="flex-sb-m w-full p-t-3 p-b-24">
-                        <div class="contact100-form-checkbox">
-                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                            <label class="label-checkbox100" for="ckb1">
-                            Remember me
-                            </label>
-                        </div>
-                        <div>
-                            <a href="#" class="txt1">
-                            Forgot?
-                            </a>
-                        </div>
-                    </div>
-                    <div class="container-login100-form-btn m-t-17">
-                        <button class="login100-form-btn">
-                        Login
-                        </button>
-                    </div>
-                </form>
+    <div id="absoluteCenteredDiv">
+        <form action="index.html" method="post">
+            <div class="box">
+                <h1>Login Form</h1>
+                <input class="username" name="username" type="text" placeholder="User Name">
+                <input class="username" name="username" type="password" placeholder="Password">
+                <a href="#"><div class="button">Sign In</div></a>
             </div>
-        </div>
+        </form>
+        <p>Forgot your password? <a class="fpwd" href="#">Click Here!</a></p>
     </div>
-    <div id="dropDownSelect1"></div>
-
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-
-    <script src="vendor/animsition/js/animsition.min.js"></script>
-
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <script src="vendor/select2/select2.min.js"></script>
-
-    <script src="vendor/daterangepicker/moment.min.js"></script>
-    <script src="vendor/daterangepicker/daterangepicker.js"></script>
-
-    <script src="vendor/countdowntime/countdowntime.js"></script>
-
-    <script src="js/main.js"></script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-23581568-13');
-    </script>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6c49dc6279f27d65","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.12.0","si":100}' crossorigin="anonymous"></script>
 </body>
 </html>
-
