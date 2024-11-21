@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inbound Request Tracking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #444;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+    table th {
+      background-color: #f4f4f4;
+      color: #555;
+      font-weight: bold;
+    }
+    table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    table tr:hover {
+      background-color: #f1f1f1;
+    }
+    table td a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    table td a:hover {
+      text-decoration: underline;
+    }
+    table td {
+      word-wrap: break-word;
+      max-width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Live Results from Google Sheet</h1>
+  <table id="sheet-data">
+    <thead>
+      <tr id="headers"></tr>
+    </thead>
+    <tbody id="data"></tbody>
+  </table>
+
+  <script>
+    const SHEET_ID = '199jKUTUspuqSkgXQIFe6FCztvwqeMoz4qK5u-_T7btM'; // Replace with your Google Sheet ID
+    const API_KEY = 'AIzaSyBGKO7en4_OqD1nF0-ef92cFN-4WdabXHU'; // Replace with your API key
+    const RANGE = 'Sheet1!A1:Z1000'; // Update range as per your data
+
+    async function fetchSheetData() {
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (data.values) {
+        displayData(data.values);
+      } else {
+        console.error('No data found in the sheet');
+      }
+    }
+
+    function displayData(data) {
+      const headersRow = data[0];
+      const rows = data.slice(1);
+
+      const headersEl = document.getElementById('headers');
+      const dataEl = document.getElementById('data');
+
+      // Add headers
+      headersEl.innerHTML = '';
+      headersRow.forEach(header => {
+        const th = document.createElement('th');
+        th.textContent = header;
+        headersEl.appendChild(th);
+      });
+
+      // Add rows
+      dataEl.innerHTML = '';
+      rows.forEach(row => {
+        const tr = document.createElement('tr');
+        row.forEach(cell => {
+          const td = document.createElement('td');
+
+          // Check if the cell content is a valid URL
+          if (cell && isValidURL(cell)) {
+            const link = document.createElement('a');
+            link.href = cell;
+            link.textContent = cell;
+            link.target = '_blank'; // Open in a new tab
+            td.appendChild(link);
+          } else {
+            td.textContent = cell || ''; // Empty cell fallback
+          }
+
+          tr.appendChild(td);
+        });
+        dataEl.appendChild(tr);
+      });
+    }
+
+    // Helper function to validate URLs
+    function isValidURL(str) {
+      try {
+        new URL(str);
+        return true;
+      } catch (error) {
+        return false;
+      }
+    }
+
+    // Load data on page load
+    fetchSheetData();
+  </script>
+</body>
+</html>
